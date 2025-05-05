@@ -172,6 +172,16 @@ let selectedOption = null;
 let userAnswers = new Array(questions.length).fill(null);
 let answeredQuestions = new Set();
 
+function getScore() {
+  const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  const userAnswers = data.userAnswers;
+  // Get the score by comparing the userAnswers with the correctAnswers
+  const score = userAnswers.filter(
+    (answer, index) => answer === questions[index].correctAnswer
+  ).length;
+  return score;
+}
+
 // Charger les données sauvegardées
 function loadSavedData() {
   const savedData = localStorage.getItem(STORAGE_KEY);
@@ -180,7 +190,10 @@ function loadSavedData() {
   if (savedData) {
     const data = JSON.parse(savedData);
     currentQuestion = data.currentQuestion;
-    score = data.score;
+    score = getScore();
+    if (score === questions.length) {
+      document.getElementById("summary").classList.add("hidden");
+    }
     userAnswers = data.userAnswers;
     answeredQuestions = new Set(data.answeredQuestions);
   }
@@ -236,6 +249,7 @@ function loadQuestion() {
   // Ajouter les classes de transition
   questionElement.classList.add("question-transition");
   optionsElement.classList.add("option-transition");
+  document.getElementById("navigation-container").classList.remove("hidden");
 
   // Animation de sortie
   questionElement.classList.add("question-fade-out");
@@ -340,6 +354,12 @@ function showResult() {
   questionElement.parentElement.classList.add("hidden");
   resultContainer.classList.remove("hidden");
   scoreElement.textContent = `Votre score : ${score} sur ${questions.length}`;
+
+  // Cacher les boutons de navigation
+  document.getElementById("prev-btn").classList.add("hidden");
+  document.getElementById("next-btn").classList.add("hidden");
+  document.getElementById("progress").classList.add("hidden");
+  document.getElementById("navigation-container").classList.add("hidden");
 
   // Afficher le résumé des réponses incorrectes
   incorrectAnswersElement.innerHTML = "";
