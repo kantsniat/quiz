@@ -50,3 +50,13 @@
   opacity: 1;
   transform: translateX(0);
 }
+
+.code {
+  background-color: #f3f4f6;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-family: monospace;
+  font-size: 0.9em;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+}
