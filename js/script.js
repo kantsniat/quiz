@@ -167,7 +167,6 @@ const STORAGE_KEY = "js_quiz_data";
 const QUIZ_COMPLETED_KEY = "js_quiz_completed";
 
 let currentQuestion = 0;
-let score = 0;
 let selectedOption = null;
 let userAnswers = new Array(questions.length).fill(null);
 let answeredQuestions = new Set();
@@ -190,7 +189,7 @@ function loadSavedData() {
   if (savedData) {
     const data = JSON.parse(savedData);
     currentQuestion = data.currentQuestion;
-    score = getScore();
+    const score = getScore();
     if (score === questions.length) {
       document.getElementById("summary").classList.add("hidden");
     }
@@ -205,7 +204,6 @@ function loadSavedData() {
 function saveData() {
   const data = {
     currentQuestion,
-    score,
     userAnswers,
     answeredQuestions: Array.from(answeredQuestions),
   };
@@ -217,22 +215,6 @@ function markQuizAsCompleted() {
   localStorage.setItem(QUIZ_COMPLETED_KEY, "true");
 }
 
-// Vérifier si le quiz est terminé
-function isQuizCompleted() {
-  return localStorage.getItem(QUIZ_COMPLETED_KEY) === "true";
-}
-
-// Réinitialiser le quiz
-function resetQuiz() {
-  localStorage.removeItem(STORAGE_KEY);
-  localStorage.removeItem(QUIZ_COMPLETED_KEY);
-  currentQuestion = 0;
-  score = 0;
-  selectedOption = null;
-  userAnswers = new Array(questions.length).fill(null);
-  answeredQuestions.clear();
-}
-
 const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
 const nextButton = document.getElementById("next-btn");
@@ -240,7 +222,6 @@ const prevButton = document.getElementById("prev-btn");
 const progressElement = document.getElementById("progress");
 const resultContainer = document.getElementById("result-container");
 const scoreElement = document.getElementById("score");
-const restartButton = document.getElementById("restart-btn");
 const incorrectAnswersElement = document.getElementById("incorrect-answers");
 
 function loadQuestion() {
@@ -335,7 +316,6 @@ function checkAnswer() {
 
   if (selectedOption === question.correctAnswer) {
     options[selectedOption].classList.add("correct");
-    score++;
   } else {
     options[selectedOption].classList.add("incorrect");
     options[question.correctAnswer].classList.add("correct");
@@ -353,6 +333,7 @@ function updateProgress() {
 function showResult() {
   questionElement.parentElement.classList.add("hidden");
   resultContainer.classList.remove("hidden");
+  const score = getScore();
   scoreElement.textContent = `Votre score : ${score} sur ${questions.length}`;
 
   // Cacher les boutons de navigation
@@ -412,6 +393,7 @@ nextButton.addEventListener("click", () => {
 document.getElementById("download-pdf").addEventListener("click", () => {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
+  const score = getScore();
 
   // Titre
   doc.setFontSize(20);
