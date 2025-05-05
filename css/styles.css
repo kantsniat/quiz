@@ -6,16 +6,6 @@
   transform: translateX(5px);
 }
 
-.option.correct {
-  background-color: #4caf50;
-  color: white;
-}
-
-.option.incorrect {
-  background-color: #f44336;
-  color: white;
-}
-
 #next-btn:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
@@ -59,4 +49,8 @@
   font-size: 0.9em;
   color: #1f2937;
   border: 1px solid #e5e7eb;
+}
+
+.active {
+  background-color: #2563eb !important;
 }

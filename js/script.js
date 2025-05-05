@@ -106,7 +106,7 @@ function loadQuestion() {
         answeredQuestions.has(currentQuestion) &&
         index === userAnswers[currentQuestion]
       ) {
-        button.classList.add("bg-blue-100");
+        button.classList.add("active");
       }
 
       // Toujours permettre de cliquer sur les options
@@ -142,8 +142,8 @@ function selectOption(index) {
   userAnswers[currentQuestion] = index;
   answeredQuestions.add(currentQuestion);
   const options = document.querySelectorAll(".option");
-  options.forEach((option) => option.classList.remove("bg-blue-100"));
-  options[index].classList.add("bg-blue-100");
+  options.forEach((option) => option.classList.remove("active"));
+  options[index].classList.add("active");
   nextButton.disabled = false;
   saveData();
 }
@@ -215,7 +215,7 @@ function showResult() {
       let formattedUserAnswer = question.options[userAnswers[index]];
       formattedUserAnswer = formattedUserAnswer.replace(
         /`([^`]+)`/g,
-        '<span class="code">$1</span>'
+        '<span class="">$1</span>'
       );
 
       // Formater la bonne réponse
@@ -227,8 +227,8 @@ function showResult() {
 
       div.innerHTML = `
         <p class="font-semibold">Question ${index + 1}: ${formattedQuestion}</p>
-        <p class="mt-2">Votre réponse: ${formattedUserAnswer}</p>
-        <p class="mt-2">Bonne réponse: ${formattedCorrectAnswer}</p>
+        <p class="mt-2 italic text-red-500">Votre réponse: ${formattedUserAnswer}</p>
+        <p class="mt-2 text-green-500 font-bold rounded-md w-fit">Bonne réponse: ${formattedCorrectAnswer}</p>
         <p class="mt-2 text-sm text-gray-600">Explication: ${
           question.explanation
         }</p>

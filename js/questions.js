@@ -35,35 +35,35 @@ export const questions = [
   {
     question: "Quelle est la valeur de `5 + '2'` en JavaScript ?",
     options: ["`7`", "`Error`", "`undefined`", "`'52'`"],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "Même principe que la question précédente : quand on ajoute un nombre à une chaîne, le nombre est converti en chaîne et les deux sont concaténés.",
   },
   {
     question: "Quelle est la valeur de `5 + 2` en JavaScript ?",
     options: ["`'52'`", "`Error`", "`undefined`", "`7`"],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation:
       "Quand on additionne deux nombres, on obtient leur somme mathématique.",
   },
   {
     question: "Quelle est la valeur de `true && false` ?",
     options: ["`true`", "`undefined`", "`false`", "`Error`"],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation:
       "L'opérateur && (ET) retourne true seulement si les deux opérandes sont true.",
   },
   {
     question: "Quelle est la valeur de `true || false` ?",
     options: ["`false`", "`undefined`", "`Error`", "`true`"],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation:
       "L'opérateur || (OU) retourne true si au moins un des opérandes est true.",
   },
   {
     question: "Quelle est la valeur de `!true` ?",
     options: ["`true`", "`undefined`", "`Error`", "`false`"],
-    correctAnswer: 2,
+    correctAnswer: 3,
     explanation:
       "L'opérateur ! (NON) inverse la valeur booléenne : !true = false, !false = true.",
   },
@@ -77,14 +77,14 @@ export const questions = [
   {
     question: "Quelle est la valeur de `'5' === 5` ?",
     options: ["`true`", "`undefined`", "`Error`", "`false`"],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "=== est l'opérateur d'égalité stricte qui compare à la fois la valeur et le type. '5' est une chaîne, 5 est un nombre.",
   },
   {
     question: "Quelle est la valeur de `'5' == 5` ?",
     options: ["`false`", "`undefined`", "`Error`", "`true`"],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation:
       "== est l'opérateur d'égalité qui convertit les types avant de comparer. '5' est converti en nombre avant la comparaison.",
   },
@@ -96,7 +96,7 @@ export const questions = [
       "`if { condition } else { }`",
       "`if (condition) { } else { }`",
     ],
-    correctAnswer: 2,
+    correctAnswer: 1,
     explanation:
       "La syntaxe correcte en JavaScript est if (condition) { } else { }. Les parenthèses autour de la condition sont obligatoires.",
   },
@@ -115,21 +115,21 @@ export const questions = [
   {
     question: "Quelle est la valeur de `10 % 3` ?",
     options: ["`3`", "`0`", "`Error`", "`1`"],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation:
       "L'opérateur % (modulo) retourne le reste de la division. 10 divisé par 3 donne 3 avec un reste de 1.",
   },
   {
     question: "Quelle est la valeur de `2 ** 3` ?",
     options: ["`6`", "`5`", "`Error`", "`8`"],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation:
       "L'opérateur ** est l'opérateur d'exponentiation. 2 ** 3 signifie 2 à la puissance 3, soit 8.",
   },
   {
     question: "Quelle est la valeur de `10 / 0` ?",
     options: ["`0`", "`Error`", "`undefined`", "`Infinity`"],
-    correctAnswer: 2,
+    correctAnswer: 3,
     explanation:
       "En JavaScript, diviser par zéro donne Infinity (ou -Infinity si le numérateur est négatif).",
   },
@@ -143,20 +143,20 @@ export const questions = [
   {
     question: "Quelle est la valeur de `typeof 'hello'` ?",
     options: ["`'object'`", "`'array'`", "`'text'`", "`'string'`"],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation: "typeof retourne 'string' pour les chaînes de caractères.",
   },
   {
     question: "Quelle est la valeur de `typeof 42` ?",
     options: ["`'integer'`", "`'float'`", "`'string'`", "`'number'`"],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation:
       "typeof retourne 'number' pour tous les nombres, qu'ils soient entiers ou décimaux.",
   },
   {
     question: "Quelle est la valeur de `!(true && false)` ?",
     options: ["`false`", "`undefined`", "`Error`", "`true`"],
-    correctAnswer: 2,
+    correctAnswer: 3,
     explanation:
       "true && false donne false, et !false donne true. Les parenthèses changent l'ordre des opérations.",
   },
