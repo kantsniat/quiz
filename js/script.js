@@ -262,15 +262,16 @@ function loadQuestion() {
       );
       button.innerHTML = formattedOption;
 
-      // Si la question a déjà été répondue, désactiver les options
-      if (answeredQuestions.has(currentQuestion)) {
-        button.disabled = true;
-        if (index === userAnswers[currentQuestion]) {
-          button.classList.add("bg-blue-100");
-        }
-      } else {
-        button.addEventListener("click", () => selectOption(index));
+      // Si la question a déjà été répondue, mettre en évidence la réponse sélectionnée
+      if (
+        answeredQuestions.has(currentQuestion) &&
+        index === userAnswers[currentQuestion]
+      ) {
+        button.classList.add("bg-blue-100");
       }
+
+      // Toujours permettre de cliquer sur les options
+      button.addEventListener("click", () => selectOption(index));
 
       optionsElement.appendChild(button);
     });
