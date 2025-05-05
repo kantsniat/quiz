@@ -1,166 +1,5 @@
-const questions = [
-  {
-    question:
-      "Quelle est la syntaxe moderne pour déclarer une variable qui ne changera pas ?",
-    options: [
-      "`const maVariable = 10;`",
-      "`let maVariable = 10;`",
-      "`var maVariable = 10;`",
-      "`variable maVariable = 10;`",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "const est utilisé pour déclarer une variable qui ne changera pas. let est utilisé pour les variables qui peuvent changer, et var est l'ancienne syntaxe à éviter.",
-  },
-  {
-    question:
-      "Comment déclare-t-on une variable qui pourra être modifiée plus tard ?",
-    options: [
-      "`let maVariable = 5;`",
-      "`const maVariable = 5;`",
-      "`var maVariable = 5;`",
-      "`variable maVariable = 5;`",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "let est utilisé pour déclarer une variable qui peut être modifiée. const est pour les variables constantes, et var est l'ancienne syntaxe à éviter.",
-  },
-  {
-    question: "Quelle est la valeur de `'5' + 2` en JavaScript ?",
-    options: ["`'52'`", "`7`", "`Error`", "`undefined`"],
-    correctAnswer: 0,
-    explanation:
-      "En JavaScript, quand on ajoute un nombre à une chaîne de caractères, le nombre est converti en chaîne et les deux sont concaténés.",
-  },
-  {
-    question: "Quelle est la valeur de `5 + '2'` en JavaScript ?",
-    options: ["`'52'`", "`7`", "`Error`", "`undefined`"],
-    correctAnswer: 0,
-    explanation:
-      "Même principe que la question précédente : quand on ajoute un nombre à une chaîne, le nombre est converti en chaîne et les deux sont concaténés.",
-  },
-  {
-    question: "Quelle est la valeur de `5 + 2` en JavaScript ?",
-    options: ["`7`", "`'52'`", "`Error`", "`undefined`"],
-    correctAnswer: 0,
-    explanation:
-      "Quand on additionne deux nombres, on obtient leur somme mathématique.",
-  },
-  {
-    question: "Quelle est la valeur de `true && false` ?",
-    options: ["`false`", "`true`", "`undefined`", "`Error`"],
-    correctAnswer: 0,
-    explanation:
-      "L'opérateur && (ET) retourne true seulement si les deux opérandes sont true.",
-  },
-  {
-    question: "Quelle est la valeur de `true || false` ?",
-    options: ["`true`", "`false`", "`undefined`", "`Error`"],
-    correctAnswer: 0,
-    explanation:
-      "L'opérateur || (OU) retourne true si au moins un des opérandes est true.",
-  },
-  {
-    question: "Quelle est la valeur de `!true` ?",
-    options: ["`false`", "`true`", "`undefined`", "`Error`"],
-    correctAnswer: 0,
-    explanation:
-      "L'opérateur ! (NON) inverse la valeur booléenne : !true = false, !false = true.",
-  },
-  {
-    question: "Quelle est la valeur de `5 > 3` ?",
-    options: ["`true`", "`false`", "`undefined`", "`Error`"],
-    correctAnswer: 0,
-    explanation:
-      "L'opérateur > retourne true si le nombre de gauche est plus grand que celui de droite.",
-  },
-  {
-    question: "Quelle est la valeur de `'5' === 5` ?",
-    options: ["`false`", "`true`", "`undefined`", "`Error`"],
-    correctAnswer: 0,
-    explanation:
-      "=== est l'opérateur d'égalité stricte qui compare à la fois la valeur et le type. '5' est une chaîne, 5 est un nombre.",
-  },
-  {
-    question: "Quelle est la valeur de `'5' == 5` ?",
-    options: ["`true`", "`false`", "`undefined`", "`Error`"],
-    correctAnswer: 0,
-    explanation:
-      "== est l'opérateur d'égalité qui convertit les types avant de comparer. '5' est converti en nombre avant la comparaison.",
-  },
-  {
-    question: "Quelle est la syntaxe correcte pour une condition if/else ?",
-    options: [
-      "`if (condition) { } else { }`",
-      "`if condition { } else { }`",
-      "`if (condition) then { } else { }`",
-      "`if { condition } else { }`",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "La syntaxe correcte en JavaScript est if (condition) { } else { }. Les parenthèses autour de la condition sont obligatoires.",
-  },
-  {
-    question: "Comment écrit-on une condition else if ?",
-    options: [
-      "`if (condition1) { } else if (condition2) { } else { }`",
-      "`if (condition1) { } if (condition2) { } else { }`",
-      "`if (condition1) { } elseif (condition2) { } else { }`",
-      "`if (condition1) { } else (condition2) { } else { }`",
-    ],
-    correctAnswer: 0,
-    explanation:
-      "La syntaxe correcte est if (condition1) { } else if (condition2) { } else { }. else if est écrit en deux mots.",
-  },
-  {
-    question: "Quelle est la valeur de `10 % 3` ?",
-    options: ["`1`", "`3`", "`0`", "`Error`"],
-    correctAnswer: 0,
-    explanation:
-      "L'opérateur % (modulo) retourne le reste de la division. 10 divisé par 3 donne 3 avec un reste de 1.",
-  },
-  {
-    question: "Quelle est la valeur de `2 ** 3` ?",
-    options: ["`8`", "`6`", "`5`", "`Error`"],
-    correctAnswer: 0,
-    explanation:
-      "L'opérateur ** est l'opérateur d'exponentiation. 2 ** 3 signifie 2 à la puissance 3, soit 8.",
-  },
-  {
-    question: "Quelle est la valeur de `10 / 0` ?",
-    options: ["`Infinity`", "`0`", "`Error`", "`undefined`"],
-    correctAnswer: 0,
-    explanation:
-      "En JavaScript, diviser par zéro donne Infinity (ou -Infinity si le numérateur est négatif).",
-  },
-  {
-    question: "Quelle est la valeur de `typeof true` ?",
-    options: ["`'boolean'`", "`'string'`", "`'number'`", "`'object'`"],
-    correctAnswer: 0,
-    explanation:
-      "typeof retourne le type d'une valeur. true est une valeur booléenne, donc typeof true retourne 'boolean'.",
-  },
-  {
-    question: "Quelle est la valeur de `typeof 'hello'` ?",
-    options: ["`'string'`", "`'object'`", "`'array'`", "`'text'`"],
-    correctAnswer: 0,
-    explanation: "typeof retourne 'string' pour les chaînes de caractères.",
-  },
-  {
-    question: "Quelle est la valeur de `typeof 42` ?",
-    options: ["`'number'`", "`'integer'`", "`'float'`", "`'string'`"],
-    correctAnswer: 0,
-    explanation:
-      "typeof retourne 'number' pour tous les nombres, qu'ils soient entiers ou décimaux.",
-  },
-  {
-    question: "Quelle est la valeur de `!(true && false)` ?",
-    options: ["`true`", "`false`", "`undefined`", "`Error`"],
-    correctAnswer: 0,
-    explanation:
-      "true && false donne false, et !false donne true. Les parenthèses changent l'ordre des opérations.",
-  },
-];
+// Import des questions
+import { questions } from "./questions.js";
 
 // Constantes pour le localStorage
 const STORAGE_KEY = "js_quiz_data";
@@ -364,14 +203,32 @@ function showResult() {
     if (userAnswers[index] !== question.correctAnswer) {
       const div = document.createElement("div");
       div.className = "p-4 bg-red-50 rounded-lg";
+
+      // Formater la question
+      let formattedQuestion = question.question;
+      formattedQuestion = formattedQuestion.replace(
+        /`([^`]+)`/g,
+        '<span class="code">$1</span>'
+      );
+
+      // Formater la réponse de l'utilisateur
+      let formattedUserAnswer = question.options[userAnswers[index]];
+      formattedUserAnswer = formattedUserAnswer.replace(
+        /`([^`]+)`/g,
+        '<span class="code">$1</span>'
+      );
+
+      // Formater la bonne réponse
+      let formattedCorrectAnswer = question.options[question.correctAnswer];
+      formattedCorrectAnswer = formattedCorrectAnswer.replace(
+        /`([^`]+)`/g,
+        '<span class="code">$1</span>'
+      );
+
       div.innerHTML = `
-        <p class="font-semibold">Question ${index + 1}: ${question.question}</p>
-        <p class="mt-2">Votre réponse: ${
-          question.options[userAnswers[index]]
-        }</p>
-        <p class="mt-2">Bonne réponse: ${
-          question.options[question.correctAnswer]
-        }</p>
+        <p class="font-semibold">Question ${index + 1}: ${formattedQuestion}</p>
+        <p class="mt-2">Votre réponse: ${formattedUserAnswer}</p>
+        <p class="mt-2">Bonne réponse: ${formattedCorrectAnswer}</p>
         <p class="mt-2 text-sm text-gray-600">Explication: ${
           question.explanation
         }</p>
@@ -426,26 +283,26 @@ document.getElementById("download-pdf").addEventListener("click", () => {
       // Question
       doc.setFontSize(12);
       doc.setFont(undefined, "bold");
-      doc.text(`Question ${index + 1}: ${question.question}`, 20, yPosition);
+      const cleanQuestion = question.question.replace(/`/g, "");
+      doc.text(`Question ${index + 1}: ${cleanQuestion}`, 20, yPosition);
       yPosition += 10;
 
       // Réponse donnée
       doc.setFont(undefined, "normal");
       doc.setTextColor(255, 0, 0);
-      doc.text(
-        `Votre réponse: ${question.options[userAnswers[index]]}`,
-        20,
-        yPosition
+      const cleanUserAnswer = question.options[userAnswers[index]].replace(
+        /`/g,
+        ""
       );
+      doc.text(`Votre réponse: ${cleanUserAnswer}`, 20, yPosition);
       yPosition += 10;
 
       // Bonne réponse
       doc.setTextColor(0, 128, 0);
-      doc.text(
-        `Bonne réponse: ${question.options[question.correctAnswer]}`,
-        20,
-        yPosition
-      );
+      const cleanCorrectAnswer = question.options[
+        question.correctAnswer
+      ].replace(/`/g, "");
+      doc.text(`Bonne réponse: ${cleanCorrectAnswer}`, 20, yPosition);
       yPosition += 10;
 
       // Explication
