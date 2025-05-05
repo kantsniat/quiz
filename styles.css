@@ -1,0 +1,52 @@
+.option {
+  transition: all 0.3s ease;
+}
+
+.option:hover {
+  transform: translateX(5px);
+}
+
+.option.correct {
+  background-color: #4caf50;
+  color: white;
+}
+
+.option.incorrect {
+  background-color: #f44336;
+  color: white;
+}
+
+#next-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Animations pour les transitions de questions */
+.question-transition {
+  transition: all 0.3s ease;
+}
+
+.question-fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.question-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation pour les options */
+.option-transition {
+  transition: all 0.3s ease;
+}
+
+.option-fade-out {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.option-fade-in {
+  opacity: 1;
+  transform: translateX(0);
+}
