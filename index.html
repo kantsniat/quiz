@@ -10,62 +10,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-javascript.min.js"></script>
   </head>
-  <body class="min-h-screen"> {/* Removed bg-gray-100 */}
-    <button id="theme-toggle-btn"></button> {/* Removed text content */}
-    {/* container, mx-auto, px-4, py-8 are for overall page structure, can remain for now */}
+  <body class="min-h-screen">
+    <button id="theme-toggle-btn"></button>
     <div class="container mx-auto px-4 py-8">
-      {/* text-4xl, font-bold, text-center, mb-8 are typographic/layout, can remain */}
-      <h1 class="text-4xl font-bold text-center mb-8"> {/* Removed text-blue-600 */}
-        Jhou JavaScript Quiz
-      </h1>
+      <h1 class="text-4xl font-bold text-center mb-8">Jhou JavaScript Quiz</h1>
 
-      {/* Removed max-w-2xl, mx-auto, bg-white, rounded-lg, shadow-lg, p-6 from #quiz-container as they are in CSS */}
       <div id="quiz-container">
-        {/* mb-6 is layout, can remain */}
         <div id="question-container" class="mb-6">
-          {/* text-xl, font-semibold, mb-4 are typographic/layout, can remain */}
           <h2 id="question" class="text-xl font-semibold mb-4"></h2>
-          {/* space-y-3 is layout, can remain */}
           <div id="options" class="space-y-3"></div>
         </div>
 
         <div id="result-container" class="hidden">
-          {/* text-2xl, font-bold, mb-4 are typographic/layout, can remain */}
           <h2 class="text-2xl font-bold mb-4">Résultat</h2>
-          {/* text-xl, mb-4 are typographic/layout, can remain */}
           <p id="score" class="text-xl mb-4"></p>
-          {/* mt-6, space-y-4 are layout, can remain */}
           <div id="summary" class="mt-6 space-y-4">
             {/* text-xl, font-semibold are typographic/layout, can remain */}
-            <h3 class="text-xl font-semibold"> {/* Removed text-red-600 */}
-              Réponses incorrectes :
-            </h3>
-            {/* space-y-4 is layout, can remain */}
+            <h3 class="text-xl font-semibold">Réponses incorrectes :</h3>
             <div id="incorrect-answers" class="space-y-4"></div>
           </div>
-          {/* mt-6, flex, justify-center are layout, can remain */}
           <div class="mt-6 flex justify-center">
-            {/* Removed bg-green-500, text-white, px-4, py-2, rounded, hover:bg-green-600 from #download-pdf */}
-            <button id="download-pdf">
-              Télécharger les résultats (PDF)
-            </button>
+            <button id="download-pdf">Télécharger les résultats (PDF)</button>
           </div>
         </div>
 
-        {/* flex, justify-between, items-center, mt-6, hidden are layout/behavioral, can remain */}
         <div
           class="flex justify-between items-center mt-6 hidden"
           id="navigation-container"
         >
-          {/* Removed bg-gray-500, text-white, px-4, py-2, rounded, hover:bg-gray-600 from #prev-btn */}
-          <button id="prev-btn">
-            Question Précédente
-          </button>
-          <span id="progress"></span> {/* Removed text-gray-600 */}
-          {/* Removed bg-green-500, text-white, px-4, py-2, rounded, hover:bg-green-600 from #next-btn */}
-          <button id="next-btn">
-            Question Suivante
-          </button>
+          <button id="prev-btn">Question Précédente</button>
+          <span id="progress"></span>
+          <button id="next-btn">Question Suivante</button>
         </div>
       </div>
     </div>
