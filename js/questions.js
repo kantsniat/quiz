@@ -94,11 +94,11 @@ export const questions = [
       "`if condition { } else { }`",
       "`if (condition) then { } else { }`",
       "`if { condition } else { }`",
-      "`if (condition) { } else { }`",
+      "```javascript\nif (condition) {\n  // code si vrai\n} else {\n  // code si faux\n}\n```",
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation:
-      "La syntaxe correcte en JavaScript est if (condition) { } else { }. Les parenthèses autour de la condition sont obligatoires.",
+      "La syntaxe correcte en JavaScript est `if (condition) { /* code */ } else { /* code */ }`. Les parenthèses autour de la condition sont obligatoires et le mot-clé `then` n'est pas utilisé comme dans certains autres langages. L'option correcte est maintenant montrée comme un bloc de code multiligne.",
   },
   {
     question: "Comment écrit-on une condition else if ?",

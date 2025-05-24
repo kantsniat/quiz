@@ -79,7 +79,12 @@ function loadQuestion() {
   setTimeout(() => {
     // Formater la question pour mettre en évidence le code
     let formattedQuestion = question.question;
-    // Trouver et remplacer les blocs de code
+    // Trouver et remplacer les blocs de code multilignes
+    formattedQuestion = formattedQuestion.replace(
+      /```([\s\S]*?)```/g,
+      '<pre><code class="code-block">$1</code></pre>'
+    );
+    // Trouver et remplacer les blocs de code en ligne
     formattedQuestion = formattedQuestion.replace(
       /`([^`]+)`/g,
       '<span class="code">$1</span>'
@@ -95,6 +100,12 @@ function loadQuestion() {
 
       // Formater les options pour mettre en évidence le code
       let formattedOption = option;
+      // Trouver et remplacer les blocs de code multilignes dans les options
+      formattedOption = formattedOption.replace(
+        /```([\s\S]*?)```/g,
+        '<pre><code class="code-block">$1</code></pre>'
+      );
+      // Trouver et remplacer les blocs de code en ligne dans les options
       formattedOption = formattedOption.replace(
         /`([^`]+)`/g,
         '<span class="code">$1</span>'
@@ -206,6 +217,12 @@ function showResult() {
 
       // Formater la question
       let formattedQuestion = question.question;
+      // Gérer les blocs de code multilignes d'abord
+      formattedQuestion = formattedQuestion.replace(
+        /```([\s\S]*?)```/g,
+        '<pre><code class="code-block">$1</code></pre>'
+      );
+      // Ensuite, gérer les blocs de code en ligne
       formattedQuestion = formattedQuestion.replace(
         /`([^`]+)`/g,
         '<span class="code">$1</span>'
@@ -213,6 +230,12 @@ function showResult() {
 
       // Formater la réponse de l'utilisateur
       let formattedUserAnswer = question.options[userAnswers[index]];
+      // Gérer les blocs de code multilignes d'abord
+      formattedUserAnswer = formattedUserAnswer.replace(
+        /```([\s\S]*?)```/g,
+        '<pre><code class="code-block">$1</code></pre>'
+      );
+      // Ensuite, gérer les blocs de code en ligne
       formattedUserAnswer = formattedUserAnswer.replace(
         /`([^`]+)`/g,
         '<span class="">$1</span>'
@@ -220,6 +243,12 @@ function showResult() {
 
       // Formater la bonne réponse
       let formattedCorrectAnswer = question.options[question.correctAnswer];
+      // Gérer les blocs de code multilignes d'abord
+      formattedCorrectAnswer = formattedCorrectAnswer.replace(
+        /```([\s\S]*?)```/g,
+        '<pre><code class="code-block">$1</code></pre>'
+      );
+      // Ensuite, gérer les blocs de code en ligne
       formattedCorrectAnswer = formattedCorrectAnswer.replace(
         /`([^`]+)`/g,
         '<span class="code">$1</span>'

@@ -54,3 +54,16 @@
 .active {
   background-color: #2563eb !important;
 }
+
+/* Styles for multiline code blocks */
+.code-block {
+  display: block;
+  background-color: #f4f4f4; /* Light gray background */
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto; /* Enable horizontal scroll */
+  white-space: pre; /* Preserve whitespace and line breaks */
+  font-family: 'Courier New', Courier, monospace; /* Monospace font */
+  margin-top: 0.5em; /* Add some space above the block */
+  margin-bottom: 0.5em; /* Add some space below the block */
+}
