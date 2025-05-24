@@ -4,11 +4,24 @@ import { questions } from "./questions.js";
 // Constantes pour le localStorage
 const STORAGE_KEY = "js_quiz_data";
 const QUIZ_COMPLETED_KEY = "js_quiz_completed";
+const THEME_STORAGE_KEY = 'js_quiz_theme'; // Added for theme
 
 let currentQuestion = 0;
 let selectedOption = null;
 let userAnswers = new Array(questions.length).fill(null);
 let answeredQuestions = new Set();
+
+// DOM Elements
+const questionElement = document.getElementById("question");
+const optionsElement = document.getElementById("options");
+const nextButton = document.getElementById("next-btn");
+const prevButton = document.getElementById("prev-btn");
+const progressElement = document.getElementById("progress");
+const resultContainer = document.getElementById("result-container");
+const scoreElement = document.getElementById("score");
+const incorrectAnswersElement = document.getElementById("incorrect-answers");
+const themeToggleBtn = document.getElementById('theme-toggle-btn'); // Added for theme
+const body = document.body; // Added for theme
 
 function getScore() {
   const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -30,7 +43,12 @@ function loadSavedData() {
     currentQuestion = data.currentQuestion;
     const score = getScore();
     if (score === questions.length) {
-      document.getElementById("summary").classList.add("hidden");
+      // If all questions are answered correctly, hide the summary section.
+      // This might need adjustment based on actual element IDs if summary is part of result-container.
+      const summaryElement = document.getElementById("summary"); // Assuming 'summary' is the ID of the incorrect answers block
+      if (summaryElement) {
+          summaryElement.classList.add("hidden");
+      }
     }
     userAnswers = data.userAnswers;
     answeredQuestions = new Set(data.answeredQuestions);
@@ -53,15 +71,6 @@ function saveData() {
 function markQuizAsCompleted() {
   localStorage.setItem(QUIZ_COMPLETED_KEY, "true");
 }
-
-const questionElement = document.getElementById("question");
-const optionsElement = document.getElementById("options");
-const nextButton = document.getElementById("next-btn");
-const prevButton = document.getElementById("prev-btn");
-const progressElement = document.getElementById("progress");
-const resultContainer = document.getElementById("result-container");
-const scoreElement = document.getElementById("score");
-const incorrectAnswersElement = document.getElementById("incorrect-answers");
 
 function loadQuestion() {
   const question = questions[currentQuestion];
@@ -380,6 +389,50 @@ document.getElementById("download-pdf").addEventListener("click", () => {
   doc.save("resultats-quiz-javascript.pdf");
 });
 
+// --- Theme Switching Logic ---
+function updateThemeButtonText(isLightTheme) {
+  if (themeToggleBtn) { // Check if button exists
+    themeToggleBtn.textContent = isLightTheme ? "Switch to Dark Mode" : "Switch to Light Mode";
+  }
+}
+
+function applyTheme(theme) {
+  if (theme === 'light') {
+    body.classList.add('light-theme');
+  } else {
+    body.classList.remove('light-theme');
+  }
+  updateThemeButtonText(theme === 'light');
+  localStorage.setItem(THEME_STORAGE_KEY, theme);
+}
+
+function toggleTheme() {
+  const isLightTheme = body.classList.contains('light-theme');
+  if (isLightTheme) {
+    applyTheme('dark');
+  } else {
+    applyTheme('light');
+  }
+}
+
+function loadThemePreference() {
+  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  } else {
+    // Default to dark theme if no preference is saved
+    // Or, you could check system preference: window.matchMedia('(prefers-color-scheme: light)').matches
+    applyTheme('dark'); 
+  }
+}
+
+// Event Listener for theme toggle
+if (themeToggleBtn) { // Check if button exists before adding listener
+  themeToggleBtn.addEventListener('click', toggleTheme);
+}
+// --- End of Theme Switching Logic ---
+
+
 // Vérifier si le quiz est déjà terminé
 const isCompleted = loadSavedData();
 if (isCompleted) {
@@ -387,3 +440,6 @@ if (isCompleted) {
 } else {
   loadQuestion();
 }
+
+// Initial load of theme preference
+loadThemePreference();

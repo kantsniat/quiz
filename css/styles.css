@@ -89,3 +89,138 @@
 .code-number {
   color: #B5CEA8; /* Light green/teal */
 }
+
+/* Light Theme Styles */
+body.light-theme {
+  background-color: #FFFFFF; /* white */
+  color: #212529; /* dark grey/black text */
+}
+
+/* Titles and text in light theme */
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme p,
+body.light-theme label,
+body.light-theme #progress { /* Ensure progress text is also updated */
+  color: #212529;
+}
+
+/* Buttons in light theme - basic styling for contrast */
+body.light-theme button,
+body.light-theme #prev-btn, 
+body.light-theme #next-btn {
+  background-color: #e9ecef; /* Light grey for buttons */
+  color: #212529; /* Dark text for buttons */
+  border: 1px solid #ced4da; /* Border for buttons */
+}
+
+body.light-theme #prev-btn:hover, 
+body.light-theme #next-btn:hover {
+    background-color: #dee2e6; /* Slightly darker on hover */
+}
+
+body.light-theme #next-btn:disabled {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border-color: #dee2e6;
+}
+
+/* Options in light theme */
+body.light-theme .option {
+  background-color: #FFFFFF;
+  border-color: #E1E4E8;
+  color: #24292E;
+}
+
+body.light-theme .option:hover {
+  background-color: #F6F8FA;
+}
+
+body.light-theme .option.active {
+  background-color: #007bff !important; /* Bootstrap primary blue for active option */
+  color: #FFFFFF !important;
+  border-color: #007bff !important;
+}
+
+/* Code Block Styles for Light Theme */
+body.light-theme .code-block {
+  background-color: #F6F8FA; /* very light grey, similar to GitHub */
+  color: #24292E; /* dark grey text, similar to GitHub */
+  border: 1px solid #E1E4E8; /* light border */
+}
+
+/* Inline Code Styles for Light Theme */
+body.light-theme .code {
+  background-color: #F6F8FA;
+  color: #24292E;
+  border: 1px solid #E1E4E8;
+}
+
+/* Syntax Highlighting Styles for Light Theme */
+body.light-theme .code-keyword {
+  color: #2965A9; /* darker blue */
+  font-weight: bold;
+}
+
+body.light-theme .code-string {
+  color: #A31515; /* darker red/brown */
+}
+
+body.light-theme .code-comment {
+  color: #57A64A; /* darker green */
+  font-style: italic;
+}
+
+body.light-theme .code-number {
+  color: #AE0EAE; /* darker magenta/purple */
+}
+
+/* Result container in light theme */
+body.light-theme #result-container {
+  background-color: #FFFFFF;
+  color: #212529;
+}
+
+body.light-theme #result-container #score {
+  color: #212529;
+}
+
+body.light-theme #incorrect-answers .p-4 { /* Assuming this is the card for incorrect answers */
+  background-color: #f8d7da; /* Light red for incorrect answer cards */
+  color: #721c24; /* Dark red text for contrast */
+  border: 1px solid #f5c6cb;
+}
+
+body.light-theme #incorrect-answers .font-semibold { /* Question text in incorrect summary */
+    color: #721c24;
+}
+body.light-theme #incorrect-answers .text-red-500 { /* User's incorrect answer */
+    color: #dc3545; /* Bootstrap danger red */
+}
+body.light-theme #incorrect-answers .text-green-500 { /* Correct answer text */
+    color: #28a745; /* Bootstrap success green */
+}
+body.light-theme #incorrect-answers .text-gray-600 { /* Explanation text */
+    color: #495057; /* Darker gray for explanation */
+}
+
+/* Theme Toggle Button Styles */
+#theme-toggle-btn {
+  padding: 8px 15px;
+  border: 1px solid #555; /* Border color for dark theme */
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #333; /* Dark background for dark theme (initial state) */
+  color: #f0f0f0; /* Light text for dark theme (initial state) */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+/* Styles for the button when light theme is active */
+body.light-theme #theme-toggle-btn {
+  background-color: #f0f0f0; /* Light background for light theme */
+  color: #333; /* Dark text for light theme */
+  border-color: #ccc; /* Border color for light theme */
+}
