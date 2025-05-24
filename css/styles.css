@@ -1,15 +1,165 @@
+/* --- DEFAULT DARK THEME STYLES --- */
+body {
+  background-color: #121212; /* Very dark grey */
+  color: #E0E0E0; /* Light grey for general text */
+  font-family: sans-serif; /* Basic font stack */
+  margin: 0;
+  padding: 0;
+}
+
+#quiz-container {
+  background-color: #1E1E1E; /* Slightly lighter dark grey */
+  border-radius: 8px; /* From original Tailwind */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adjusted shadow for dark */
+  padding: 24px; /* From original Tailwind p-6 */
+  margin: 32px auto; /* From original Tailwind py-8 and mx-auto */
+  max-width: 42rem; /* From original Tailwind max-w-2xl */
+}
+
+/* General Text Elements in Dark Theme */
+h1, h2, h3, h4, h5, h6, p, label, #progress {
+  color: #E0E0E0;
+}
+
+/* Specific heading styles from Tailwind - adjust color for dark theme */
+h1.text-4xl { /* As in index.html */
+  font-size: 2.25rem; /* 36px */
+  font-weight: bold;
+  text-align: center;
+  color: #58a6ff; /* Brighter blue for dark theme */
+  margin-bottom: 2rem; /* mb-8 */
+}
+
+h2#question { /* As in index.html */
+  font-size: 1.25rem; /* xl */
+  font-weight: 600; /* semibold */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+h2.text-2xl { /* Result heading */
+    font-size: 1.5rem; /* 2xl */
+    font-weight: bold;
+    margin-bottom: 1rem; /* mb-4 */
+}
+h3.text-xl { /* Incorrect answers heading */
+    font-size: 1.25rem; /* xl */
+    font-weight: 600; /* semibold */
+    color: #f87171; /* Lighter red for dark theme */
+}
+
+
+/* Options in Dark Theme */
 .option {
-  transition: all 0.3s ease;
+  background-color: #333333;
+  color: #E0E0E0;
+  border: 1px solid #555555;
+  border-radius: 0.25rem; /* Tailwind rounded */
+  padding: 0.75rem; /* Tailwind p-3 */
+  width: 100%; /* Tailwind w-full */
+  text-align: left; /* Tailwind text-left */
+  transition: all 0.3s ease; /* Existing transition */
 }
 
 .option:hover {
-  transform: translateX(5px);
+  background-color: #444444;
+  transform: translateX(5px); /* Existing transform */
 }
 
-#next-btn:disabled {
-  background-color: #cccccc;
+.option.active { /* This is the selected, unanswered option */
+  background-color: #0056b3 !important; /* Darker blue, ensure !important if Tailwind is still active */
+  border-color: #0056b3 !important;
+  color: #FFFFFF !important;
+}
+
+/* Navigation and Action Buttons in Dark Theme */
+button,
+#prev-btn,
+#next-btn,
+#download-pdf {
+  background-color: #007BFF; /* Primary blue */
+  color: #FFFFFF;
+  padding: 0.5rem 1rem; /* Tailwind px-4 py-2 */
+  border-radius: 0.25rem; /* Tailwind rounded */
+  border: 1px solid #007BFF;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#prev-btn, #next-btn, #download-pdf { /* Specific IDs if they need distinct base styles beyond general button */
+    /* Can add specific margins or other properties here if needed */
+}
+
+button:hover,
+#prev-btn:hover,
+#next-btn:hover,
+#download-pdf:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  border-color: #0056b3;
+}
+
+#next-btn:disabled,
+#prev-btn:disabled { /* Assuming prev might also be disabled */
+  background-color: #555555;
+  color: #AAAAAA;
+  border-color: #555555;
   cursor: not-allowed;
 }
+
+/* Progress Indicator in Dark Theme */
+#progress {
+  color: #E0E0E0;
+}
+
+/* Result Container in Dark Theme */
+#result-container {
+  /* background-color: #1E1E1E; Already covered by #quiz-container */
+  color: #E0E0E0;
+}
+
+#score {
+  font-size: 1.25rem; /* Tailwind text-xl */
+  margin-bottom: 1rem; /* Tailwind mb-4 */
+  color: #E0E0E0;
+}
+
+#incorrect-answers .p-4 { /* This class is on the div for each incorrect answer */
+  background-color: #4B0000; /* Dark red background */
+  color: #FFCCCC; /* Light red/pink text */
+  border: 1px solid #800000; /* Darker red border */
+  border-radius: 0.5rem; /* Tailwind rounded-lg */
+  padding: 1rem; /* Tailwind p-4 */
+  margin-bottom: 1rem; /* From space-y-4 on parent */
+}
+
+#incorrect-answers .font-semibold { /* Question text in summary */
+  color: #FFFFFF; /* White or very light for emphasis */
+  font-weight: 600;
+}
+#incorrect-answers .italic.text-red-500 { /* User's answer - use a more descriptive class if possible */
+  color: #FF8A8A; /* Lighter red for user's incorrect answer */
+  font-style: italic;
+}
+#incorrect-answers .text-green-500 { /* Correct answer - use a more descriptive class */
+  color: #8DFF8D; /* Lighter green for correct answer */
+  font-weight: bold;
+}
+#incorrect-answers .text-sm.text-gray-600 { /* Explanation - use a more descriptive class */
+  color: #B0B0B0; /* Lighter gray for explanation */
+  font-size: 0.875rem; /* sm */
+}
+
+
+/* --- EXISTING STYLES (Dark code blocks, transitions, light theme overrides) --- */
+/* Retain existing .option transitions, but base style is now dark */
+.option {
+  transition: all 0.3s ease; /* This was already here, ensure it's not duplicated if merged carefully */
+}
+
+.option:hover {
+  /* transform: translateX(5px); Already defined above, ensure it's not duplicated */
+}
+
+/* #next-btn:disabled was previously #cccccc, now handled by dark theme button:disabled */
 
 /* Animations pour les transitions de questions */
 .question-transition {
@@ -41,7 +191,7 @@
   transform: translateX(0);
 }
 
-/* VS Code Dark+ theme for inline code */
+/* VS Code Dark+ theme for inline code - THIS IS THE DEFAULT DARK THEME FOR CODE */
 .code {
   background-color: #1E1E1E; /* Editor Background */
   color: #D4D4D4;            /* Default Text Color */
@@ -52,11 +202,18 @@
   border: 1px solid #252526;  /* Subtle border */
 }
 
+/* .active class for selected option (before answering) - already handled by .option.active in dark theme */
+/* The existing .active rule was:
 .active {
   background-color: #2563eb !important;
-}
+} 
+This will be overridden by the new dark theme .option.active or the light theme's .option.active.
+It might be better to remove this generic .active if it's only for options.
+For now, the specificity of `body.light-theme .option.active` and the new dark theme `.option.active` should take precedence.
+*/
 
-/* VS Code Dark+ theme for multiline code blocks */
+
+/* VS Code Dark+ theme for multiline code blocks - THIS IS THE DEFAULT DARK THEME FOR CODE BLOCKS */
 .code-block {
   display: block;
   background-color: #1E1E1E; /* Editor Background */
@@ -71,10 +228,10 @@
   margin-bottom: 0.5em;
 }
 
-/* Syntax highlighting styles */
+/* Syntax highlighting styles - THESE ARE FOR THE DEFAULT DARK THEME */
 .code-keyword {
   color: #569CD6; /* Blue */
-  font-weight: bold; /* Optional: makes keywords stand out more */
+  font-weight: bold; 
 }
 
 .code-string {
@@ -83,49 +240,67 @@
 
 .code-comment {
   color: #6A9955; /* Green */
-  font-style: italic; /* Optional: makes comments stand out */
+  font-style: italic; 
 }
 
 .code-number {
   color: #B5CEA8; /* Light green/teal */
 }
 
-/* Light Theme Styles */
+/* --- LIGHT THEME STYLES (Overrides) --- */
 body.light-theme {
-  background-color: #FFFFFF; /* white */
-  color: #212529; /* dark grey/black text */
+  background-color: #FFFFFF; 
+  color: #212529; 
 }
 
-/* Titles and text in light theme */
+body.light-theme #quiz-container {
+  background-color: #FFFFFF;
+  border: 1px solid #dee2e6; /* Add border for light theme container */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Standard shadow */
+}
+
+
 body.light-theme h1,
 body.light-theme h2,
+body.light-theme h3, /* Added h3 */
 body.light-theme p,
 body.light-theme label,
-body.light-theme #progress { /* Ensure progress text is also updated */
+body.light-theme #progress { 
   color: #212529;
 }
 
-/* Buttons in light theme - basic styling for contrast */
+/* Light theme specific heading color adjustments if needed */
+body.light-theme h1.text-4xl {
+    color: #007bff; /* Standard blue for light theme */
+}
+body.light-theme h3.text-xl { /* Incorrect answers heading in light theme */
+    color: #dc3545; /* Standard red for light theme */
+}
+
+
 body.light-theme button,
 body.light-theme #prev-btn, 
-body.light-theme #next-btn {
-  background-color: #e9ecef; /* Light grey for buttons */
-  color: #212529; /* Dark text for buttons */
-  border: 1px solid #ced4da; /* Border for buttons */
+body.light-theme #next-btn,
+body.light-theme #download-pdf { /* Added download-pdf for consistency */
+  background-color: #e9ecef; 
+  color: #212529; 
+  border: 1px solid #ced4da; 
 }
 
+body.light-theme button:hover,
 body.light-theme #prev-btn:hover, 
-body.light-theme #next-btn:hover {
-    background-color: #dee2e6; /* Slightly darker on hover */
+body.light-theme #next-btn:hover,
+body.light-theme #download-pdf:hover { /* Added download-pdf for consistency */
+    background-color: #dee2e6; 
 }
 
-body.light-theme #next-btn:disabled {
+body.light-theme #next-btn:disabled,
+body.light-theme #prev-btn:disabled { /* Added prev-btn for consistency */
   background-color: #f8f9fa;
   color: #6c757d;
   border-color: #dee2e6;
 }
 
-/* Options in light theme */
 body.light-theme .option {
   background-color: #FFFFFF;
   border-color: #E1E4E8;
@@ -137,47 +312,43 @@ body.light-theme .option:hover {
 }
 
 body.light-theme .option.active {
-  background-color: #007bff !important; /* Bootstrap primary blue for active option */
+  background-color: #007bff !important; 
   color: #FFFFFF !important;
   border-color: #007bff !important;
 }
 
-/* Code Block Styles for Light Theme */
 body.light-theme .code-block {
-  background-color: #F6F8FA; /* very light grey, similar to GitHub */
-  color: #24292E; /* dark grey text, similar to GitHub */
-  border: 1px solid #E1E4E8; /* light border */
+  background-color: #F6F8FA; 
+  color: #24292E; 
+  border: 1px solid #E1E4E8; 
 }
 
-/* Inline Code Styles for Light Theme */
 body.light-theme .code {
   background-color: #F6F8FA;
   color: #24292E;
   border: 1px solid #E1E4E8;
 }
 
-/* Syntax Highlighting Styles for Light Theme */
 body.light-theme .code-keyword {
-  color: #2965A9; /* darker blue */
+  color: #0000FF; /* Standard Blue for light theme keywords */
   font-weight: bold;
 }
 
 body.light-theme .code-string {
-  color: #A31515; /* darker red/brown */
+  color: #A31515; 
 }
 
 body.light-theme .code-comment {
-  color: #57A64A; /* darker green */
+  color: #008000; /* Standard Green for light theme comments */
   font-style: italic;
 }
 
 body.light-theme .code-number {
-  color: #AE0EAE; /* darker magenta/purple */
+  color: #098658; /* Darker Green/Teal for light theme numbers */
 }
 
-/* Result container in light theme */
 body.light-theme #result-container {
-  background-color: #FFFFFF;
+  /* background-color: #FFFFFF; Covered by quiz-container */
   color: #212529;
 }
 
@@ -185,42 +356,50 @@ body.light-theme #result-container #score {
   color: #212529;
 }
 
-body.light-theme #incorrect-answers .p-4 { /* Assuming this is the card for incorrect answers */
-  background-color: #f8d7da; /* Light red for incorrect answer cards */
-  color: #721c24; /* Dark red text for contrast */
+body.light-theme #incorrect-answers .p-4 { 
+  background-color: #f8d7da; 
+  color: #721c24; 
   border: 1px solid #f5c6cb;
 }
 
-body.light-theme #incorrect-answers .font-semibold { /* Question text in incorrect summary */
-    color: #721c24;
+body.light-theme #incorrect-answers .font-semibold { 
+    color: #58151c; /* Darker for better contrast on light red */
 }
-body.light-theme #incorrect-answers .text-red-500 { /* User's incorrect answer */
-    color: #dc3545; /* Bootstrap danger red */
+body.light-theme #incorrect-answers .italic.text-red-500 { 
+    color: #721c24; /* Standard error text color */
 }
-body.light-theme #incorrect-answers .text-green-500 { /* Correct answer text */
-    color: #28a745; /* Bootstrap success green */
+body.light-theme #incorrect-answers .text-green-500 { 
+    color: #155724; /* Standard success text color */
 }
-body.light-theme #incorrect-answers .text-gray-600 { /* Explanation text */
-    color: #495057; /* Darker gray for explanation */
+body.light-theme #incorrect-answers .text-gray-600 { 
+    color: #495057; 
 }
 
-/* Theme Toggle Button Styles */
+/* Theme Toggle Button Styles (No changes needed, already good for default dark) */
 #theme-toggle-btn {
-  padding: 8px 15px;
-  border: 1px solid #555; /* Border color for dark theme */
+  /* Keep existing: position, top, right, z-index, border-radius, cursor */
+  /* Keep existing theme-dependent: background-color, color, border-color */
+  padding: 8px; /* Updated padding */
+  line-height: 0; /* May help vertically center SVG if it's the sole child */
+  border: 1px solid #555; 
   border-radius: 4px;
   cursor: pointer;
-  background-color: #333; /* Dark background for dark theme (initial state) */
-  color: #f0f0f0; /* Light text for dark theme (initial state) */
+  background-color: #333; 
+  color: #f0f0f0; 
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000; /* Ensure it's on top of other elements */
+  z-index: 1000; 
 }
 
-/* Styles for the button when light theme is active */
+#theme-toggle-btn svg {
+  width: 20px; /* Or desired size, e.g., 18px or 20px */
+  height: 20px; /* Or desired size */
+  display: block; /* Helps with sizing and centering */
+}
+
 body.light-theme #theme-toggle-btn {
-  background-color: #f0f0f0; /* Light background for light theme */
-  color: #333; /* Dark text for light theme */
-  border-color: #ccc; /* Border color for light theme */
+  background-color: #f0f0f0; 
+  color: #333; 
+  border-color: #ccc; 
 }
