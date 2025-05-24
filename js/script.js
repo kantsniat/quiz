@@ -77,18 +77,36 @@ function loadQuestion() {
 
   // Attendre la fin de l'animation de sortie avant de changer le contenu
   setTimeout(() => {
+    const keywords = ['const', 'let', 'var', 'if', 'else', 'return', 'function', 'for', 'while', 'true', 'false', 'null', 'undefined', 'new', 'typeof', 'instanceof', 'class', 'extends', 'super', 'this', 'async', 'await', 'try', 'catch', 'finally', 'import', 'export', 'default', 'switch', 'case', 'break', 'continue'];
+    const keywordRegex = new RegExp('\\b(' + keywords.join('|') + ')\\b', 'g');
+
+    function applySyntaxHighlighting(codeContent) {
+      // Ensure HTML entities are handled to prevent XSS if not already done
+      // For this step, assuming codeContent is plain text from questions.js
+      
+      // 1. Comments
+      codeContent = codeContent.replace(/(\/\/.*)/g, '<span class="code-comment">$1</span>');
+      // 2. Strings (basic handling for escaped quotes)
+      codeContent = codeContent.replace(/('[^'\\]*(?:\\.[^'\\]*)*'|"[^"\\]*(?:\\.[^"\\]*)*")/g, '<span class="code-string">$1</span>');
+      // 3. Keywords
+      codeContent = codeContent.replace(keywordRegex, '<span class="code-keyword">$1</span>');
+      // 4. Numbers
+      codeContent = codeContent.replace(/(\b\d+\.?\d*\b)/g, '<span class="code-number">$1</span>');
+      return codeContent;
+    }
+
     // Formater la question pour mettre en évidence le code
     let formattedQuestion = question.question;
     // Trouver et remplacer les blocs de code multilignes
-    formattedQuestion = formattedQuestion.replace(
-      /```([\s\S]*?)```/g,
-      '<pre><code class="code-block">$1</code></pre>'
-    );
+    formattedQuestion = formattedQuestion.replace(/```([\s\S]*?)```/g, (match, codeContent) => {
+      const highlightedCode = applySyntaxHighlighting(codeContent);
+      return `<pre><code class="code-block">${highlightedCode}</code></pre>`;
+    });
     // Trouver et remplacer les blocs de code en ligne
-    formattedQuestion = formattedQuestion.replace(
-      /`([^`]+)`/g,
-      '<span class="code">$1</span>'
-    );
+    formattedQuestion = formattedQuestion.replace(/`([^`]+)`/g, (match, codeContent) => {
+      const highlightedCode = applySyntaxHighlighting(codeContent);
+      return `<span class="code">${highlightedCode}</span>`;
+    });
 
     questionElement.innerHTML = formattedQuestion;
     optionsElement.innerHTML = "";
@@ -101,15 +119,15 @@ function loadQuestion() {
       // Formater les options pour mettre en évidence le code
       let formattedOption = option;
       // Trouver et remplacer les blocs de code multilignes dans les options
-      formattedOption = formattedOption.replace(
-        /```([\s\S]*?)```/g,
-        '<pre><code class="code-block">$1</code></pre>'
-      );
+      formattedOption = formattedOption.replace(/```([\s\S]*?)```/g, (match, codeContent) => {
+        const highlightedCode = applySyntaxHighlighting(codeContent);
+        return `<pre><code class="code-block">${highlightedCode}</code></pre>`;
+      });
       // Trouver et remplacer les blocs de code en ligne dans les options
-      formattedOption = formattedOption.replace(
-        /`([^`]+)`/g,
-        '<span class="code">$1</span>'
-      );
+      formattedOption = formattedOption.replace(/`([^`]+)`/g, (match, codeContent) => {
+        const highlightedCode = applySyntaxHighlighting(codeContent);
+        return `<span class="code">${highlightedCode}</span>`;
+      });
       button.innerHTML = formattedOption;
 
       // Si la question a déjà été répondue, mettre en évidence la réponse sélectionnée

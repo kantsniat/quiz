@@ -41,29 +41,51 @@
   transform: translateX(0);
 }
 
+/* VS Code Dark+ theme for inline code */
 .code {
-  background-color: #f3f4f6;
+  background-color: #1E1E1E; /* Editor Background */
+  color: #D4D4D4;            /* Default Text Color */
   padding: 0.2em 0.4em;
-  border-radius: 0.25rem;
-  font-family: monospace;
+  border-radius: 3px;         /* Or 0.25rem */
+  font-family: 'Courier New', Courier, monospace;
   font-size: 0.9em;
-  color: #1f2937;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #252526;  /* Subtle border */
 }
 
 .active {
   background-color: #2563eb !important;
 }
 
-/* Styles for multiline code blocks */
+/* VS Code Dark+ theme for multiline code blocks */
 .code-block {
   display: block;
-  background-color: #f4f4f4; /* Light gray background */
+  background-color: #1E1E1E; /* Editor Background */
+  color: #D4D4D4;            /* Default Text Color */
   padding: 10px;
   border-radius: 4px;
-  overflow-x: auto; /* Enable horizontal scroll */
-  white-space: pre; /* Preserve whitespace and line breaks */
-  font-family: 'Courier New', Courier, monospace; /* Monospace font */
-  margin-top: 0.5em; /* Add some space above the block */
-  margin-bottom: 0.5em; /* Add some space below the block */
+  border: 1px solid #252526;  /* Subtle border */
+  overflow-x: auto;           /* Enable horizontal scroll */
+  white-space: pre;           /* Preserve whitespace and line breaks */
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Syntax highlighting styles */
+.code-keyword {
+  color: #569CD6; /* Blue */
+  font-weight: bold; /* Optional: makes keywords stand out more */
+}
+
+.code-string {
+  color: #CE9178; /* Orange */
+}
+
+.code-comment {
+  color: #6A9955; /* Green */
+  font-style: italic; /* Optional: makes comments stand out */
+}
+
+.code-number {
+  color: #B5CEA8; /* Light green/teal */
 }
